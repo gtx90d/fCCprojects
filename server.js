@@ -3,6 +3,7 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
+const mongoose    = require("mongoose");
 require('dotenv').config();
 
 const apiRoutes         = require('./routes/api.js');
@@ -26,6 +27,8 @@ app.route('/')
 
 //For FCC testing purposes
 fccTestingRoutes(app);
+
+mongoose.connect(process.env.MONGO_URI);
 
 //Routing for API 
 apiRoutes(app);  
